@@ -1,0 +1,147 @@
+:root {
+  --sidebar-width: 260px;
+  --bg-main: #f1f5f9;
+  --bg-sidebar: #0f172a;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --border: #e2e8f0;
+  --card-bg: #ffffff;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root, .app-layout {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background-color: var(--bg-main);
+}
+
+.app-layout {
+  display: flex;
+}
+
+/* Sidebar - Fixed Width */
+.sidebar {
+  width: var(--sidebar-width);
+  min-width: var(--sidebar-width);
+  background-color: var(--bg-sidebar);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.sidebar-header { padding: 24px; display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.sidebar-nav { padding: 20px; flex-grow: 1; overflow-y: auto; }
+
+.nav-item { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 8px; color: #94a3b8; cursor: pointer; margin-bottom: 4px; }
+.nav-item.active { background-color: var(--primary); color: white; }
+
+.settings-panel { padding: 0 12px; }
+.settings-item input {
+  width: 100%;
+  background-color: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  padding: 10px;
+  color: white;
+  font-size: 12px;
+}
+
+/* Main Content */
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+}
+
+.top-bar {
+  height: 64px;
+  background-color: white;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  flex-shrink: 0;
+}
+
+/* Scrollable Grid */
+.content-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr 1fr;
+  gap: 20px;
+  padding: 24px;
+  flex-grow: 1;
+  overflow: hidden; /* Main grid container must not scroll */
+}
+
+/* Panels */
+.input-card, .output-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Fill the grid cell */
+  min-height: 0; /* Important for flex/grid children */
+  overflow: hidden;
+}
+
+.card-header {
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Scrollable children */
+.report-form {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto; /* Scroll here */
+  flex-grow: 1;
+}
+
+.document-viewer {
+  flex-grow: 1;
+  overflow-y: auto; /* Scroll here */
+  background-color: #cbd5e1;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.prose {
+  width: 100%;
+  max-width: 900px;
+  background: white;
+  padding: 60px 80px;
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  min-height: fit-content;
+}
+
+.raw-content {
+  width: 100%;
+  font-family: monospace;
+  font-size: 12px;
+  padding: 20px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
