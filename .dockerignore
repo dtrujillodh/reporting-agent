@@ -1,0 +1,13 @@
+# Exclude local configuration and sensitive files
+.venv/
+.git/
+.env
+service-account.json
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+.DS_Store

@@ -71,7 +71,7 @@ PROCESS:
 
 4. If a brand has no data or a meeting is cancelled, output "# [Brand Name]\n\n**Meeting cancelled.**"
 5. Return the final report as a single Markdown-formatted string.
-"""
+gemini"""
 
 agent = LlmAgent(
     name="reporting_analyst",

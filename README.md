@@ -1,36 +1,41 @@
-# 📊 Reporting Agent (ADK + MCP)
+# Reporting Agent
 
-This agent automates the creation of monthly reports by extracting data from Google Drive files (Docs and Slides) and generating a formatted Google Doc report.
+The Reporting Agent is a specialized system for automating data extraction and report generation from Google Workspace assets using the ADK framework and MCP.
 
-## Architecture
+## Overview
 
-- **ADK Agent**: Orchestrates the reporting logic and data synthesis.
-- **MCP Server**: Provides tools to interact with Google Drive, Docs, and Slides.
-- **Google Workspace APIs**: The underlying data source.
+This agent streamlines the creation of reports by leveraging:
+- **ADK Agent**: Orchestrates data synthesis.
+- **MCP Server**: Provides secure, tool-based access to Google Drive, Docs, and Slides.
 
-## Setup
+## Quick Start
 
-1. **Google Cloud Project**: Ensure you have a project with Drive and Docs APIs enabled.
-2. **Authentication**: Use a Service Account and share your Drive folder with its email.
-3. **Environment Variables**:
-   ```env
-   GOOGLE_CLOUD_PROJECT=dh-imd
-   GOOGLE_APPLICATION_CREDENTIALS=path/to/service-account.json
+### Prerequisites
+- Google Cloud Project with Drive and Docs APIs enabled.
+- A service account configured for the workspace.
+
+### Local Development
+1. Install dependencies:
+   ```bash
+   uv sync
+   ```
+2. Run the services:
+   ```bash
+   # Run the MCP server
+   uv run mcp-server/server.py
+   # Run the agent
+   uv run agent/agent.py
    ```
 
 ## Development
+- Build the frontend: `cd frontend && npm install && npm run build`
+- Run the backend: `uv run python backend/main.py`
 
-### Install Dependencies
-```bash
-uv sync
-```
+## Deployment
+This project is containerized for easy deployment to Cloud Run. See `RUNNING_LOCALLY.md` for local Docker instructions.
 
-### Run MCP Server
-```bash
-uv run mcp-server/server.py
-```
+## Contributing
+Please refer to `CONTRIBUTING.md` for guidelines.
 
-### Run ADK Agent
-```bash
-uv run agent/agent.py
-```
+## License
+Confidential - Internal Use Only.
